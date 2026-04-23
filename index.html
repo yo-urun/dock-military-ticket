@@ -31,7 +31,6 @@
     }
     .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-    /* Hero */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -96,7 +95,6 @@
       box-shadow: 0 8px 30px rgba(108,92,231,0.45);
     }
 
-    /* Sections */
     section { padding: 80px 0; }
     .section-label {
       font-size: 12px;
@@ -122,6 +120,13 @@
       transition: border-color 0.3s;
     }
     .service-card:hover { border-color: var(--accent); }
+    .service-photo {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      display: block;
+    }
     .service-icon {
       font-size: 1.6rem;
       margin-bottom: 16px;
@@ -166,7 +171,6 @@
     }
     .service-docs strong { color: var(--green); }
 
-    /* Reviews carousel */
     .reviews-section { overflow: hidden; }
     .carousel-wrapper { position: relative; }
     .carousel-track {
@@ -205,12 +209,10 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .review-full { display: none; }
     .review-card.expanded .review-text {
       -webkit-line-clamp: unset;
       display: block;
     }
-    .review-card.expanded .review-full { display: inline; }
     .review-expand {
       background: none;
       border: none;
@@ -242,7 +244,6 @@
     }
     .carousel-btn:hover { border-color: var(--accent); }
 
-    /* Process */
     .process-list { display: grid; gap: 16px; }
     .process-step {
       background: var(--card);
@@ -268,7 +269,6 @@
     .process-step h3 { font-size: 1.05rem; margin-bottom: 4px; }
     .process-step p { color: var(--text-dim); font-size: 0.92rem; }
 
-    /* CTA */
     .cta-section {
       text-align: center;
       padding: 100px 0;
@@ -276,7 +276,6 @@
     .cta-section h2 { margin-bottom: 16px; }
     .cta-section p { color: var(--text-dim); margin-bottom: 32px; font-size: 1.1rem; }
 
-    /* Footer */
     footer {
       border-top: 1px solid var(--border);
       padding: 40px 0;
@@ -286,41 +285,6 @@
     }
     footer a { color: var(--accent-light); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
-
-    /* Modal */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal-content {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px;
-      max-width: 560px;
-      width: 100%;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    .modal-content h3 { font-size: 1.3rem; margin-bottom: 16px; }
-    .modal-content p { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 12px; }
-    .modal-close {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      padding: 8px 20px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      margin-top: 16px;
-    }
 
     @media (max-width: 640px) {
       .review-card { flex: 0 0 280px; }
@@ -349,6 +313,7 @@
       <div class="services-grid">
         <!-- Military ticket -->
         <div class="service-card">
+          <img class="service-photo" src="https://cdn4.telesco.pe/file/YeIH93BW5NdMEKqROgyUV9n_lDrtV3nHo-p4NIWH_FOP0NY8GSLwu1pFBhDzKBOxrJDeFvyMULKLDkvIsl9spG3eQRR041gQNiDqLH6vyiBgD8s0KLhZuE4egN4L_JQQub3Apoeqkd8hefIjrfWAXy_sDcOBgujtAmCg_xtCdhcx6VN3dHFHdqwd9coqXeBp4iSWIRJLUmf--ykJn4sS1sgPUxFlt0CENqzYBtMQQyHLjKZSHG-2FNpmDFGMupCmzoecUClhY2g5uC2QtpgJNTi71yYAVMahR_6hJfyRf7eMOxOt8T60loqMK5i38LMmGqxMtgfDXU_BYBiehMJqcw.jpg" alt="Военный билет">
           <div class="service-icon">🎖</div>
           <h3>Содействие в получении военного билета</h3>
           <p class="service-desc">Комплексное сопровождение при прохождении призывных мероприятий и верификации медицинских оснований.</p>
@@ -373,6 +338,7 @@
 
         <!-- Driver license -->
         <div class="service-card">
+          <img class="service-photo" src="https://cdn4.telesco.pe/file/VLhxJUqr_8dJzQOLy31oceJeoAMCe32KsCQS_lBlH01gofbqjcsuPPY0OiatK2YtFI5Y1Sbopr53NBME3KSxSTpM3PU3Az-QisfiQqF3_NYei_fzrxGCWsDmcby7NdqmwMjFcMCrUpwql3mqDwQ5je56IMtMcjxt5QEsbX28gDbJIKwQRaHOkuE-HdYUhn5wAa_2ILnJKACNL1XO6K5u9yYNMurxzYEn_H0XkqFuG0ZDDqzYUsf9s5ML1hGIrJNp1X8egaBEo0kuRpXP_Qn_uQIYdyknQkrom2fYKzt5F9xZAOQFi0AUotCjHNYXbakCxwK9AmqIhWRWspN9npcqpg.jpg" alt="Водительское удостоверение">
           <div class="service-icon">🚗</div>
           <h3>Оформление водительского удостоверения</h3>
           <p class="service-desc">Профессиональная помощь в легализации статуса водителя и квалификационной подготовке.</p>
@@ -397,6 +363,7 @@
 
         <!-- Education -->
         <div class="service-card">
+          <img class="service-photo" src="https://cdn4.telesco.pe/file/J8lQkMeacsOEZ2SumFYkunvmeARWW2NH2cOgj1BHU-JSP-uTBnig60qCQz5iMro9j9WubuDFPObCu6DqsKeKFEPjaSKisCqWtR9lOOd5aNka8EqGfFyD35jxr4jTSGcNYRoTIems6Jg873KPBLqNn2C24LfHHEA7ebaG7MA6tisnWt4qY5nI8y63fyMPzJa0wm5xYyMa0b1oguWTyUVfk2nP3BN9aRvFWSohG0cNDM5JDlOHp0Hl6y2yOCfBMc99SB_KSMSQB507NxL_cml0UA2uDuTvBnJ9ClZyo7s9UKpBhXI2-w5nYRJoulMmYFAxkDN6POp9wWB4JsSksbbitg.jpg" alt="Образовательные документы">
           <div class="service-icon">🎓</div>
           <h3>Образовательные услуги</h3>
           <p class="service-desc">Документальное подтверждение квалификации и академического статуса.</p>

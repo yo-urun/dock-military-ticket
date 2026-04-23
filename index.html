@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DockSell — Консалтинговые и экспертные услуги</title>
+  <meta name="description" content="Содействие в получении военного билета, водительского удостоверения и образовательных документов. Полное сопровождение.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --dark: #0b0b10;
+      --card: #14141c;
+      --border: #1f1f2e;
+      --accent: #6c5ce7;
+      --accent-light: #a29bfe;
+      --green: #00b894;
+      --text: #e2e2e2;
+      --text-dim: #7f8c8d;
+      --radius: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('https://cdn4.telesco.pe/file/YeIH93BW5NdMEKqROgyUV9n_lDrtV3nHo-p4NIWH_FOP0NY8GSLwu1pFBhDzKBOxrJDeFvyMULKLDkvIsl9spG3eQRR041gQNiDqLH6vyiBgD8s0KLhZuE4egN4L_JQQub3Apoeqkd8hefIjrfWAXy_sDcOBgujtAmCg_xtCdhcx6VN3dHFHdqwd9coqXeBp4iSWIRJLUmf--ykJn4sS1sgPUxFlt0CENqzYBtMQQyHLjKZSHG-2FNpmDFGMupCmzoecUClhY2g5uC2QtpgJNTi71yYAVMahR_6hJfyRf7eMOxOt8T60loqMK5i38LMmGqxMtgfDXU_BYBiehMJqcw.jpg') center/cover no-repeat;
+      opacity: 0.15;
+      filter: blur(2px);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11,11,16,0.4) 0%, rgba(11,11,16,0.95) 100%);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(108,92,231,0.18);
+      border: 1px solid rgba(108,92,231,0.35);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--accent-light);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin-bottom: 36px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(108,92,231,0.45);
+    }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent-light);
+      margin-bottom: 12px;
+    }
+    section h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 40px;
+      line-height: 1.25;
+    }
+
+    /* Services */
+    .services-grid { display: grid; gap: 24px; }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      transition: border-color 0.3s;
+    }
+    .service-card:hover { border-color: var(--accent); }
+    .service-icon {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .service-desc {
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      margin-bottom: 24px;
+    }
+    .tariffs { display: grid; gap: 12px; margin-bottom: 20px; }
+    .tariff {
+      background: rgba(108,92,231,0.08);
+      border: 1px solid rgba(108,92,231,0.15);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .tariff-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .tariff-name { font-weight: 600; font-size: 0.95rem; }
+    .tariff-price {
+      font-weight: 800;
+      color: var(--accent-light);
+      font-size: 1.1rem;
+    }
+    .tariff-desc { color: var(--text-dim); font-size: 0.85rem; }
+    .service-docs {
+      padding: 12px 16px;
+      background: rgba(0,184,148,0.08);
+      border: 1px solid rgba(0,184,148,0.2);
+      border-radius: 10px;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+    .service-docs strong { color: var(--green); }
+
+    /* Reviews carousel */
+    .reviews-section { overflow: hidden; }
+    .carousel-wrapper { position: relative; }
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 10px 0 20px;
+    }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .review-card {
+      flex: 0 0 320px;
+      scroll-snap-align: start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .review-author {
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+      color: var(--accent-light);
+    }
+    .review-text {
+      color: var(--text-dim);
+      font-size: 0.88rem;
+      flex: 1;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 8;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .review-full { display: none; }
+    .review-card.expanded .review-text {
+      -webkit-line-clamp: unset;
+      display: block;
+    }
+    .review-card.expanded .review-full { display: inline; }
+    .review-expand {
+      background: none;
+      border: none;
+      color: var(--accent-light);
+      font-size: 0.82rem;
+      cursor: pointer;
+      margin-top: 8px;
+      text-align: left;
+      padding: 0;
+    }
+    .carousel-nav {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+    }
+    .carousel-btn:hover { border-color: var(--accent); }
+
+    /* Process */
+    .process-list { display: grid; gap: 16px; }
+    .process-step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .process-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: rgba(108,92,231,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--accent-light);
+    }
+    .process-step h3 { font-size: 1.05rem; margin-bottom: 4px; }
+    .process-step p { color: var(--text-dim); font-size: 0.92rem; }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 100px 0;
+    }
+    .cta-section h2 { margin-bottom: 16px; }
+    .cta-section p { color: var(--text-dim); margin-bottom: 32px; font-size: 1.1rem; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--accent-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .modal-content h3 { font-size: 1.3rem; margin-bottom: 16px; }
+    .modal-content p { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 12px; }
+    .modal-close {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      padding: 8px 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .review-card { flex: 0 0 280px; }
+      .service-card { padding: 24px; }
+      section { padding: 48px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-content container">
+      <div class="hero-badge">📋 Консалтинг и экспертиза</div>
+      <h1>Решения,<br>которые <span>работают</span></h1>
+      <p class="hero-sub">Содействие в оформлении военного билета, водительского удостоверения и образовательных документов. Полное сопровождение — от консультации до результата.</p>
+      <a href="#services" class="hero-cta">Узнать подробности ↓</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-label">Услуги</div>
+      <h2>Перечень консалтинговых услуг</h2>
+
+      <div class="services-grid">
+        <!-- Military ticket -->
+        <div class="service-card">
+          <div class="service-icon">🎖</div>
+          <h3>Содействие в получении военного билета</h3>
+          <p class="service-desc">Комплексное сопровождение при прохождении призывных мероприятий и верификации медицинских оснований.</p>
+          <div class="tariffs">
+            <div class="tariff">
+              <div class="tariff-header">
+                <span class="tariff-name">Тариф «Стандарт»</span>
+                <span class="tariff-price">270 000 ₽</span>
+              </div>
+              <p class="tariff-desc">Активное личное участие. Полное кураторство: маршрутный лист по специалистам, инструкции по анамнезу и подготовке жалоб. От 1 до нескольких месяцев.</p>
+            </div>
+            <div class="tariff">
+              <div class="tariff-header">
+                <span class="tariff-name">VIP / Делегирование</span>
+                <span class="tariff-price">390 000 ₽</span>
+              </div>
+              <p class="tariff-desc">Минимум личного присутствия. Представитель берёт на себя административную и клиническую нагрузку. Визит в комиссариат — не более 4 раз. 3–4 месяца.</p>
+            </div>
+          </div>
+          <div class="service-docs"><strong>Документы:</strong> Скан-копии паспорта (все страницы PDF) + приписное удостоверение</div>
+        </div>
+
+        <!-- Driver license -->
+        <div class="service-card">
+          <div class="service-icon">🚗</div>
+          <h3>Оформление водительского удостоверения</h3>
+          <p class="service-desc">Профессиональная помощь в легализации статуса водителя и квалификационной подготовке.</p>
+          <div class="tariffs">
+            <div class="tariff">
+              <div class="tariff-header">
+                <span class="tariff-name">«Полный цикл» Под ключ</span>
+                <span class="tariff-price">165 000 ₽</span>
+              </div>
+              <p class="tariff-desc">Зачисление в автошколу, теоретический курс, внутренние аттестации, финальный экзамен в ГИБДД.</p>
+            </div>
+            <div class="tariff">
+              <div class="tariff-header">
+                <span class="tariff-name">Практический модуль</span>
+                <span class="tariff-price">100 000 ₽</span>
+              </div>
+              <p class="tariff-desc">Организация и сопровождение этапа проверки навыков управления транспортным средством.</p>
+            </div>
+          </div>
+          <div class="service-docs"><strong>Документы:</strong> Паспортные данные, свидетельство об окончании автошколы, медзаключение ф. №003-В/у</div>
+        </div>
+
+        <!-- Education -->
+        <div class="service-card">
+          <div class="service-icon">🎓</div>
+          <h3>Образовательные услуги</h3>
+          <p class="service-desc">Документальное подтверждение квалификации и академического статуса.</p>
+          <div class="tariffs">
+            <div class="tariff">
+              <div class="tariff-header">
+                <span class="tariff-name">Среднее профессиональное (СПО)</span>
+                <span class="tariff-price">от 100 000 ₽</span>
+              </div>
+              <p class="tariff-desc">Стоимость зависит от учебного заведения и формы обучения.</p>
+            </div>
+            <div class="tariff">
+              <div class="tariff-header">
+                <span class="tariff-name">Высшее (Бакалавриат / Специалитет)</span>
+                <span class="tariff-price">от 235 000 ₽</span>
+              </div>
+              <p class="tariff-desc">Зависит от престижности вуза, факультета и формы обучения. Стандартный цикл — около 3 месяцев.</p>
+            </div>
+          </div>
+          <div class="service-docs"><strong>Документы:</strong> Паспорт (все страницы), ИНН, СНИЛС, аттестат о предыдущем уровне образования</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container">
+      <div class="section-label">Процесс</div>
+      <h2>Как это работает</h2>
+      <div class="process-list">
+        <div class="process-step">
+          <div class="process-num">1</div>
+          <div>
+            <h3>Консультация</h3>
+            <p>Напишите в Telegram — разберём вашу ситуацию и предложим оптимальный вариант.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">2</div>
+          <div>
+            <h3>Сбор документов</h3>
+            <p>Предоставьте необходимый пакет — мы проверим и подготовим всё для запуска процесса.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">3</div>
+          <div>
+            <h3>Сопровождение</h3>
+            <p>Полное кураторство: инструкции, маршрутные листы, взаимодействие с профильными лицами.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">4</div>
+          <div>
+            <h3>Результат</h3>
+            <p>Получение готового документа лично — быстро и без лишних хлопот.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="reviews-section">
+    <div class="container">
+      <div class="section-label">Отзывы</div>
+      <h2>Что говорят клиенты</h2>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel">
+          <div class="review-card">
+            <div class="review-author">Кирилл Мурдо</div>
+            <div class="review-text">Все началось с осознания того что мне придется сидеть ГОД, очень далеко от дома. Денег тогда не было, а время в вузе подходило к концу... После бессонных ночей с изучением «ПризываНет» я решил дать им шанс, который только потратил мои деньги. В тот момент было чувство что у меня одна дорога — в армию. Все изменилось когда я увидел пост в Телеграме. Написал, созвонился — мне всё объяснили. Пришлось занимать, работать по 10 часов, но я наскреб. Перевел деньги и ждал. Пришло сообщение: «Все сделано, вот инструкция». Спустя неделю стоял с военным билетом. Моя жизнь была починена.</div>
+            <button class="review-expand" onclick="this.parentElement.classList.toggle('expanded');this.textContent=this.parentElement.classList.contains('expanded')?'Свернуть':'Читать полностью'">Читать полностью</button>
+          </div>
+          <div class="review-card">
+            <div class="review-author">Артём Кутенко</div>
+            <div class="review-text">Все произошло слишком быстро — за пару дней жизнь перевернулась. Повестка. Сначала откладывал, потом начало накрывать. Начал искать информацию — форумы, чаты, но чем больше читал, тем больше путался. Самое тяжёлое — чувство что ты один. Наткнулся на обсуждение, где упоминали DockSell. Написал. Ответили спокойно, без лишних обещаний. Пришлось занимать, работать без остановки. Когда перевёл — началось ожидание. И вот приходит сообщение с инструкцией. Дальше всё пошло проще. Когда стоял с готовыми документами — не верил что закончилось. Одно решение действительно может вытащить из полной жести.</div>
+            <button class="review-expand" onclick="this.parentElement.classList.toggle('expanded');this.textContent=this.parentElement.classList.contains('expanded')?'Свернуть':'Читать полностью'">Читать полностью</button>
+          </div>
+          <div class="review-card">
+            <div class="review-author">Денисов</div>
+            <div class="review-text">Не могу выразить словами насколько я рад что не потратил год под Луганском. DockSell реально спас с военным билетом. Весь процесс недолгий и понятный — дают четкую инструкцию куда идти и что делать. Если что — со всем помогут. +rep работяге.</div>
+          </div>
+          <div class="review-card">
+            <div class="review-author">Тимофей Кравченко</div>
+            <div class="review-text">Всегда умел водить машину, но очень заебно было сдавать — проблемы со временем. Но это всё решилось одним сообщением в лс. Ахуенный чувак, документы сделал. Очень выручил 🤝</div>
+          </div>
+          <div class="review-card">
+            <div class="review-author">Scrrrra</div>
+            <div class="review-text">Я падаю в ноги за такое чудо 🙏 Спас меня от годовой каторги. Этот год уж точно будет стоить того. Спс еще раз!</div>
+          </div>
+          <div class="review-card">
+            <div class="review-author">Жимкий</div>
+            <div class="review-text">Четко заебись — бац бац и уже диплом есть. Лучший брат!</div>
+          </div>
+          <div class="review-card">
+            <div class="review-author">Swwosh | Кейсы</div>
+            <div class="review-text">Огромное спасибо за военный билет)) Всем советую не тратить год жизни на приказы товарища майора, а кайфануть))</div>
+          </div>
+          <div class="review-card">
+            <div class="review-author">Swaaag#4</div>
+            <div class="review-text">Очень много проблем было с армией, но несколько сообщений всё решили. Сделал гигантскую работу — всё рассказал, дал чёткую инструкцию как и куда идти. Чисто на 15 минут зашёл и забрал билет. Огромное спасибо 💪</div>
+          </div>
+          <div class="review-card">
+            <div class="review-author">RaF</div>
+            <div class="review-text">Благодарю, крутой чел вообще бомба!</div>
+          </div>
+          <div class="review-card">
+            <div class="review-author">Аноним</div>
+            <div class="review-text">Идеально всё отработал, больше спасибо!</div>
+          </div>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-btn" onclick="document.getElementById('carousel').scrollBy({left:-340,behavior:'smooth'})">←</button>
+          <button class="carousel-btn" onclick="document.getElementById('carousel').scrollBy({left:340,behavior:'smooth'})">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Готовы начать?</h2>
+      <p>Напишите — разберём вашу ситуацию и подберём оптимальный формат.</p>
+      <a href="https://t.me/DockSell" class="hero-cta">Написать в Telegram →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p><strong>DockSell</strong> — консалтинговые и экспертные услуги</p>
+      <p>Telegram: <a href="https://t.me/DockSell">@DockSell</a> · Отзывы: <a href="https://t.me/DOCKREVIEW">@DOCKREVIEW</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
